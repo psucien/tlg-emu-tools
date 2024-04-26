@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\common">
+      <UniqueIdentifier>{3234b7dc-ffa0-4261-87ed-cdcca340cec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\compress">
+      <UniqueIdentifier>{02da4839-c865-4b1c-815d-59e7929a1bf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\decompress">
+      <UniqueIdentifier>{0f312752-0ae9-45cd-b262-d5d8acc8a728}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\zstd\lib\common\debug.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\common\entropy_common.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\common\error_private.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\common\fse_decompress.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\common\pool.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\common\threading.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\common\xxhash.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\common\zstd_common.c">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\fse_compress.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\hist.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\huf_compress.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\zstd_compress.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\zstd_compress_literals.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\zstd_compress_sequences.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\zstd_compress_superblock.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\zstd_double_fast.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\zstd_fast.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\zstd_lazy.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\zstd_ldm.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\zstd_opt.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\compress\zstdmt_compress.c">
+      <Filter>Source Files\compress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\decompress\huf_decompress.c">
+      <Filter>Source Files\decompress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\decompress\zstd_ddict.c">
+      <Filter>Source Files\decompress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\decompress\zstd_decompress.c">
+      <Filter>Source Files\decompress</Filter>
+    </ClCompile>
+    <ClCompile Include="..\zstd\lib\decompress\zstd_decompress_block.c">
+      <Filter>Source Files\decompress</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

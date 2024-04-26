@@ -1,0 +1,12 @@
+[submodule "third/sokol"]
+	path = third/sokol
+	url = https://github.com/floooh/sokol
+[submodule "third/imgui"]
+	path = third/imgui
+	url = https://github.com/ocornut/imgui
+[submodule "third/zstd"]
+	path = third/zstd
+	url = https://github.com/facebook/zstd.git
+[submodule "third/minizip-ng"]
+	path = third/minizip-ng
+	url = https://github.com/zlib-ng/minizip-ng.git

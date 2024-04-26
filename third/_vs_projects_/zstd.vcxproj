@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\zstd\lib\common\debug.c" />
+    <ClCompile Include="..\zstd\lib\common\entropy_common.c" />
+    <ClCompile Include="..\zstd\lib\common\error_private.c" />
+    <ClCompile Include="..\zstd\lib\common\fse_decompress.c" />
+    <ClCompile Include="..\zstd\lib\common\pool.c" />
+    <ClCompile Include="..\zstd\lib\common\threading.c" />
+    <ClCompile Include="..\zstd\lib\common\xxhash.c" />
+    <ClCompile Include="..\zstd\lib\common\zstd_common.c" />
+    <ClCompile Include="..\zstd\lib\compress\fse_compress.c" />
+    <ClCompile Include="..\zstd\lib\compress\hist.c" />
+    <ClCompile Include="..\zstd\lib\compress\huf_compress.c" />
+    <ClCompile Include="..\zstd\lib\compress\zstdmt_compress.c" />
+    <ClCompile Include="..\zstd\lib\compress\zstd_compress.c" />
+    <ClCompile Include="..\zstd\lib\compress\zstd_compress_literals.c" />
+    <ClCompile Include="..\zstd\lib\compress\zstd_compress_sequences.c" />
+    <ClCompile Include="..\zstd\lib\compress\zstd_compress_superblock.c" />
+    <ClCompile Include="..\zstd\lib\compress\zstd_double_fast.c" />
+    <ClCompile Include="..\zstd\lib\compress\zstd_fast.c" />
+    <ClCompile Include="..\zstd\lib\compress\zstd_lazy.c" />
+    <ClCompile Include="..\zstd\lib\compress\zstd_ldm.c" />
+    <ClCompile Include="..\zstd\lib\compress\zstd_opt.c" />
+    <ClCompile Include="..\zstd\lib\decompress\huf_decompress.c" />
+    <ClCompile Include="..\zstd\lib\decompress\zstd_ddict.c" />
+    <ClCompile Include="..\zstd\lib\decompress\zstd_decompress.c" />
+    <ClCompile Include="..\zstd\lib\decompress\zstd_decompress_block.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{c16b5908-0524-49d2-aaee-1a10b81e0e85}</ProjectGuid>
+    <RootNamespace>zstd</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)build\out\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\build\obj\$(Configuration)\zstd\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>$(SolutionDir)\build\obj\$(Configuration)\zstd\</IntDir>
+    <OutDir>$(SolutionDir)build\out\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_LIB;ZSTD_MULTITHREAD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_LIB;ZSTD_MULTITHREAD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

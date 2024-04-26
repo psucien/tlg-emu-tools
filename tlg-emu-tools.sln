@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.33906.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "third", "third", "{5B041145-6861-434C-A549-7B326F436CA3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "common", "common\common.vcxproj", "{B6AFF447-4F0D-46DB-A587-7501DBAC30F7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "brazor", "brazor\brazor.vcxproj", "{9EBF0E9F-49DD-44EC-A4E3-B2C3FF42FDE2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{81EE21B3-17CE-4980-BAC6-B1DD171B9063} = {81EE21B3-17CE-4980-BAC6-B1DD171B9063}
+		{B6AFF447-4F0D-46DB-A587-7501DBAC30F7} = {B6AFF447-4F0D-46DB-A587-7501DBAC30F7}
+		{C16B5908-0524-49D2-AAEE-1A10B81E0E85} = {C16B5908-0524-49D2-AAEE-1A10B81E0E85}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "miniz", "third\_vs_projects_\miniz.vcxproj", "{81EE21B3-17CE-4980-BAC6-B1DD171B9063}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zstd", "third\_vs_projects_\zstd.vcxproj", "{C16B5908-0524-49D2-AAEE-1A10B81E0E85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6AFF447-4F0D-46DB-A587-7501DBAC30F7}.Debug|x64.ActiveCfg = Debug|x64
+		{B6AFF447-4F0D-46DB-A587-7501DBAC30F7}.Debug|x64.Build.0 = Debug|x64
+		{B6AFF447-4F0D-46DB-A587-7501DBAC30F7}.Release|x64.ActiveCfg = Release|x64
+		{B6AFF447-4F0D-46DB-A587-7501DBAC30F7}.Release|x64.Build.0 = Release|x64
+		{9EBF0E9F-49DD-44EC-A4E3-B2C3FF42FDE2}.Debug|x64.ActiveCfg = Debug|x64
+		{9EBF0E9F-49DD-44EC-A4E3-B2C3FF42FDE2}.Debug|x64.Build.0 = Debug|x64
+		{9EBF0E9F-49DD-44EC-A4E3-B2C3FF42FDE2}.Release|x64.ActiveCfg = Release|x64
+		{9EBF0E9F-49DD-44EC-A4E3-B2C3FF42FDE2}.Release|x64.Build.0 = Release|x64
+		{81EE21B3-17CE-4980-BAC6-B1DD171B9063}.Debug|x64.ActiveCfg = Release|x64
+		{81EE21B3-17CE-4980-BAC6-B1DD171B9063}.Debug|x64.Build.0 = Release|x64
+		{81EE21B3-17CE-4980-BAC6-B1DD171B9063}.Release|x64.ActiveCfg = Release|x64
+		{81EE21B3-17CE-4980-BAC6-B1DD171B9063}.Release|x64.Build.0 = Release|x64
+		{C16B5908-0524-49D2-AAEE-1A10B81E0E85}.Debug|x64.ActiveCfg = Release|x64
+		{C16B5908-0524-49D2-AAEE-1A10B81E0E85}.Debug|x64.Build.0 = Release|x64
+		{C16B5908-0524-49D2-AAEE-1A10B81E0E85}.Release|x64.ActiveCfg = Release|x64
+		{C16B5908-0524-49D2-AAEE-1A10B81E0E85}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{81EE21B3-17CE-4980-BAC6-B1DD171B9063} = {5B041145-6861-434C-A549-7B326F436CA3}
+		{C16B5908-0524-49D2-AAEE-1A10B81E0E85} = {5B041145-6861-434C-A549-7B326F436CA3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2101C804-3E6F-4CCC-B8ED-B914E5694442}
+	EndGlobalSection
+EndGlobal
