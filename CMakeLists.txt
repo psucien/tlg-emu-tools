@@ -1,0 +1,35 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+PROJECT(brazor)
+
+SET(CMAKE_CXX_STANDARD 23)
+
+IF (UNIX)
+        SET(LINUX_LIBS GL X11 Xi Xcursor)
+ENDIF (UNIX)
+
+FILE(GLOB_RECURSE
+        BRAZOR_SRCS
+        ${CMAKE_CURRENT_SOURCE_DIR}/brazor/*.cc
+        ${CMAKE_CURRENT_SOURCE_DIR}/brazor/*.h        
+        ${CMAKE_CURRENT_SOURCE_DIR}/common/*.cc
+        ${CMAKE_CURRENT_SOURCE_DIR}/common/*.h)
+
+FILE(GLOB
+        IMGUI
+        ${CMAKE_CURRENT_SOURCE_DIR}/third/imgui/*.cpp)
+
+SOURCE_GROUP(${PROJECT_NAME}
+        FILES
+        ${BRAZOR_SRCS})
+
+INCLUDE_DIRECTORIES(
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/third)
+
+ADD_EXECUTABLE(${PROJECT_NAME}
+        ${BRAZOR_SRCS}
+        ${IMGUI})
+
+TARGET_LINK_LIBRARIES(
+        ${PROJECT_NAME}
+        ${LINUX_LIBS})

@@ -98,6 +98,7 @@
     <ClInclude Include="gpu_shared.h" />
     <ClInclude Include="ipc_manager.h" />
     <ClInclude Include="display_iface.h" />
+    <ClInclude Include="win32\smart_handle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

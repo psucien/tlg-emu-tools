@@ -484,7 +484,7 @@ on_set_context_reg
                 auto const &reg =
                     reinterpret_cast<DB_HTILE_DATA_BASE const&>(it_body[1]);
                 ImGui::Text(
-                    "addr: %08llx",
+                    "addr: %08x",
                     reg.bits.BASE_256B * 256u
                 );
                 break;
@@ -644,18 +644,18 @@ struct dbg_cmdlist final : public i_cmdproc
             std::string{ vqid > 254 ? "GFX" : "ASC" };
 
         if (vqid < 254) {
-            queue_name += std::format("{}", vqid);
+            queue_name += std::to_string(vqid);
         }
 
         ImGui::Begin(queue_name.c_str());
         {
             ImGui::Text("queue    : %s", queue_name.c_str());
-            ImGui::Text("base addr: %08llX", cmdb_addr);
+            ImGui::Text("base addr: %08lX", cmdb_addr);
             ImGui::SameLine();
             if (ImGui::SmallButton(">")) {
                 cmdb_view.Open = true;
             }
-            ImGui::Text("size     : %04X",   cmdb_size);
+            ImGui::Text("size     : %04lX",   cmdb_size);
             ImGui::Separator();
 
             char batch_hdr[128];
@@ -664,7 +664,7 @@ struct dbg_cmdlist final : public i_cmdproc
                 auto const *pm4_hdr =
                     reinterpret_cast<PM4_HEADER const*>(cmdb_addr + batches[batch_id].start_addr);
 
-                sprintf_s(
+                sprintf(
                     batch_hdr,
                     "%08llX: batch-%03d | %s",
                     cmdb_addr + batches[batch_id].start_addr,
@@ -691,7 +691,7 @@ struct dbg_cmdlist final : public i_cmdproc
                             op = pm4_t3->opcode;
 
                             static char header_name[128];
-                            sprintf_s(
+                            sprintf(
                                 header_name,
                                 "%08llX: %s",
                                 cmdb_addr + batches[batch_id].start_addr + processed_size,

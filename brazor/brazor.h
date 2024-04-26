@@ -3,42 +3,15 @@
 
 #include <common/ipc_manager.h>
 
-#include <windows.h>
-
 #include <array>
 #include <chrono>
 #include <vector>
 
-
-struct smart_handle
-{
-    smart_handle() = default;
-    explicit smart_handle(HANDLE h) : storage(h) {}
-    ~smart_handle()
-    {
-        CloseHandle(storage);
-        storage = INVALID_HANDLE_VALUE;
-    }
-
-    HANDLE operator=(HANDLE in)
-    {
-        return storage = in;
-    }
-
-    operator HANDLE() const
-    {
-        return storage;
-    }
-
-    bool operator!() const
-    {
-        return (storage == INVALID_HANDLE_VALUE)
-            || (storage == 0);
-    }
-
-    HANDLE storage{ INVALID_HANDLE_VALUE };
-};
-
+#if _WIN32
+#   include <common/win32/smart_handle.h>
+#else
+using smart_handle = uint32_t;
+#endif
 
 struct debugger_module
 {
@@ -66,7 +39,6 @@ struct debugger_module
 
     void flip(int buf_idx);
 
-
     struct mem_region_desc_t {
         smart_handle    handle{};
         void           *ptr{nullptr};
@@ -86,6 +58,7 @@ struct debugger_module
     bool                        do_pause{ true };
     bool                        do_render{ false };
 
+#if 0
     struct mem_file_data
     {
         HANDLE          h_mem_file;
@@ -94,6 +67,7 @@ struct debugger_module
     };
 
     std::vector<mem_file_data>              mem_files{};
+#endif
 
     bool                                    cap_is_opened{ false };
 

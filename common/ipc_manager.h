@@ -3,7 +3,9 @@
 
 #include "common.h"
 
+#ifdef _WIN32
 #include <windows.h>
+#endif
 
 #include <condition_variable>
 #include <cstdint>
@@ -46,13 +48,15 @@ static_assert(sizeof(stack_payload_t) == SHMEM_STACK_PAYLOAD_SIZE);
 
 struct shmem_info_block_header
 {
+    static auto constexpr MAX_TITLE_NAME = 255ul;
+
     uint32_t                        magic{ 0 };
     uint32_t                        num_mem_regions{ 0 };
     memory_region_desc              mem_descs[MAX_MEMORY_REGIONS];
     vo_buffer_desc_t                vo_buffers[MAX_VO_BUFFERS];
     uint32_t                        num_vo_buffers{ 0 };
     uint64_t                        num_frames_submitted{ 0 };
-    char                            title_name[MAX_PATH];
+    char                            title_name[MAX_TITLE_NAME];
 };
 static_assert(sizeof(shmem_info_block_header) <= SHMEM_INFO_BLOCK_SIZE);
 
@@ -140,12 +144,14 @@ private:
     void wait_for_connection();
 
     std::thread thread_{};
+#ifdef _WIN32
     HANDLE shmem_ib_handle_{ INVALID_HANDLE_VALUE };
     HANDLE shmem_stack_handle_{ INVALID_HANDLE_VALUE };
     HANDLE client_pipe_in_h_{ INVALID_HANDLE_VALUE };
     HANDLE client_pipe_out_h_{ INVALID_HANDLE_VALUE };
     HANDLE server_pipe_in_h_{ INVALID_HANDLE_VALUE };
     HANDLE server_pipe_out_h_{ INVALID_HANDLE_VALUE };
+#endif
     bool is_client_connected_{ false };
 
     std::condition_variable cv_reconnect_{};

@@ -88,4 +88,8 @@ using vec4 = point4_t<T>;
 #define LOG_ASSERT(expr, format, ...)                   do { if (!(expr)) { printf(format"\n", __VA_ARGS__); assert(0); } } while (0)
 #define LOG_ASSERT_RETURN(expr, retval, format, ...)
 
+#ifdef _WIN32 
+#   define snprintf sprintf_s
+#endif
+
 #endif

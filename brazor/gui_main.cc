@@ -5,7 +5,11 @@
 #include <common/ipc_manager.h>
 
 #define SOKOL_IMPL
-#define SOKOL_D3D11
+#if _WIN32
+#   define SOKOL_D3D11
+#else
+#   define SOKOL_GLCORE33
+#endif
 #include <sokol/sokol_app.h>
 #include <sokol/sokol_gfx.h>
 #include <sokol/sokol_glue.h>
@@ -13,6 +17,8 @@
 
 #include <imgui/imgui.h>
 #include <sokol/util/sokol_imgui.h>
+
+#include <fstream>
 
 debugger_module tool{};
 
@@ -176,11 +182,11 @@ debugger_module::flip
         blit.buf_idx = buf_idx;
     }
 
-    frame_end_t[0] =
-        std::chrono::high_resolution_clock::now();
-    frame_time = std::chrono::duration_cast<std::chrono::microseconds>(
-        tool.frame_end_t[0] - tool.frame_start_t[0]
-    ).count();
+    //frame_end_t[0] =
+    //    std::chrono::high_resolution_clock::now();
+    //frame_time = std::chrono::duration_cast<std::chrono::microseconds>(
+    //    tool.frame_end_t[0] - tool.frame_start_t[0]
+    //).count();
 
     vo_labels[buf_idx] = 0;
 
@@ -331,7 +337,7 @@ online_mode
 
                 throbber_time += delta_time;
                 if (throbber_time > delta_wait) {
-                    throbber_idx = (throbber_idx + 1) % (ARRAYSIZE(throbber) - 1);
+                    throbber_idx = (throbber_idx + 1) % (ARRAY_SIZE(throbber) - 1);
                     throbber_time = 0.0;
                 }
 
@@ -345,12 +351,9 @@ online_mode
                 if (tool.connect()) {
                     auto const *iblock_ptr =
                         reinterpret_cast<shmem_info_block_header const*>(tool.iblock.ptr);
-                    auto const &name = std::format(
-                        "{} [{}]",
-                        APP_NAME,
-                        iblock_ptr->title_name
-                    );
-                    sapp_set_window_title(name.c_str());
+                    std::string app_title = std::string{ APP_NAME }.append(" : ")
+                        + iblock_ptr->title_name;
+                    sapp_set_window_title(app_title.c_str());
                 }
             }
             ImGui::End();
@@ -474,18 +477,19 @@ on_event
         if (num_dropped_files > 0) {
             assert(num_dropped_files == 1);
             auto const* path = sapp_get_dropped_file_path(0);
-            FILE* fh{};
-            fopen_s(&fh, path, "rb");
-            if (fh) {
-                fseek(fh, 0, SEEK_END);
-                auto const f_sz = ftell(fh);
-                fseek(fh, 0, SEEK_SET);
+            std::ifstream fin{ path, std::ofstream::in | std::ofstream::ate | std::ofstream::binary };
+            if (fin.is_open()) {
+                size_t const f_sz = fin.tellg();
+                fin.seekg(0);
 
                 cmdlist_data = std::make_unique<uint8_t[]>(f_sz);
                 cmdlist_sz = f_sz;
 
-                fread_s(cmdlist_data.get(), f_sz, f_sz, 1, fh);
-                fclose(fh);
+                fin.read(
+                    reinterpret_cast<char*>(cmdlist_data.get()),
+                    f_sz
+                );
+                fin.close();
             }
         }
     }

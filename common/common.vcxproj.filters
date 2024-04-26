@@ -41,5 +41,8 @@
     <ClInclude Include="display_iface.h">
       <Filter>Header Files\ifaces</Filter>
     </ClInclude>
+    <ClInclude Include="win32\smart_handle.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
