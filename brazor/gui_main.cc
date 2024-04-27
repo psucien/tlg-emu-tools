@@ -37,6 +37,29 @@ debugger_module::connect()
 
 std::unique_ptr<uint8_t[]> cmdlist_data{}; // to make Turtle happy ;)
 size_t cmdlist_sz{};
+
+void
+sokol_logger
+        ( char const   *tag                // always "sapp"
+        , uint32_t      log_level          // 0=panic, 1=error, 2=warning, 3=info
+        , uint32_t      log_item_id        // SAPP_LOGITEM_*
+        , char const   *message_or_null    // a message string, may be nullptr in release mode
+        , uint32_t      line_nr            // line number in sokol_app.h
+        , char const   *filename_or_null   // source filename, may be nullptr in release mode
+        , void         *user_data
+        )
+{
+#if !defined(_WIN32)
+    printf(
+        "%d:[%3d] %s (%s:%d)\n",
+        log_level,
+        log_item_id,
+        message_or_null,
+        filename_or_null,
+        line_nr
+    );
+#endif
+}
 // }
 
 //----------------------------------------------------------------------------
@@ -234,6 +257,7 @@ init()
     blit.bind.vertex_buffers[0] = blit.vbuf;
     blit.bind.fs.samplers[0]    = blit.smp;
 
+#if _WIN32
     sg_shader_desc sh_desc{};
     sh_desc.attrs[0].sem_name = "POSITION";
     sh_desc.attrs[1].sem_name = "TEXCOORD";
@@ -270,6 +294,7 @@ init()
     pl_desc.layout.attrs[1].format = SG_VERTEXFORMAT_FLOAT2;
     pl_desc.shader = blit.sh;
     blit.pl = sg_make_pipeline(&pl_desc);
+#endif
 
 #if 0
     gpu_.init();
@@ -522,5 +547,6 @@ sokol_main
     desc.height             = WINDOW_DIM_Y;
     desc.window_title       = APP_NAME;
     desc.enable_dragndrop   = true;
+    desc.logger             = { sokol_logger, nullptr };
     return desc;
 }
