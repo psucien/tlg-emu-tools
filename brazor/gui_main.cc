@@ -3,9 +3,10 @@
 #include "gui.h"
 
 #include <common/ipc_manager.h>
+#include <common/gpu_shared.h>
 
 #define SOKOL_IMPL
-#if _WIN32
+#if _WIN64
 #   define SOKOL_D3D11
 #else
 #   define SOKOL_GLCORE33
@@ -23,17 +24,6 @@
 debugger_module tool{};
 
 // Tmp placeholders {
-bool
-debugger_module::is_emulator_running()
-{
-    return false;
-}
-
-bool
-debugger_module::connect()
-{
-    return false;
-}
 
 std::unique_ptr<uint8_t[]> cmdlist_data{}; // to make Turtle happy ;)
 size_t cmdlist_sz{};
@@ -49,7 +39,7 @@ sokol_logger
         , void         *user_data
         )
 {
-#if !defined(_WIN32)
+#if !defined(_WIN64)
     printf(
         "%d:[%3d] %s (%s:%d)\n",
         log_level,
@@ -163,23 +153,19 @@ irq_handler
         ( int event_id
         )
 {
-#if 0 // TODO: ipc
     ipc_packet pkt{};
     pkt.opcode    = ipc_packet::opcode_t::eIRQ;
     pkt.irq.event = event_id;
     g_ipc_manager.client_write_packet(&pkt);
-#endif
 }
 
 //----------------------------------------------------------------------------
 static void
 idle_handler()
 {
-#if 0 // TODO: ipc
     ipc_packet pkt{};
     pkt.opcode    = ipc_packet::opcode_t::eGPU_IDLE;
     g_ipc_manager.client_write_packet(&pkt);
-#endif
 }
 
 //----------------------------------------------------------------------------
@@ -205,15 +191,15 @@ debugger_module::flip
         blit.buf_idx = buf_idx;
     }
 
-    //frame_end_t[0] =
-    //    std::chrono::high_resolution_clock::now();
-    //frame_time = std::chrono::duration_cast<std::chrono::microseconds>(
-    //    tool.frame_end_t[0] - tool.frame_start_t[0]
-    //).count();
+    frame_end_t[0] =
+        std::chrono::high_resolution_clock::now();
+    frame_time = std::chrono::duration_cast<std::chrono::microseconds>(
+        tool.frame_end_t[0] - tool.frame_start_t[0]
+    ).count();
 
     vo_labels[buf_idx] = 0;
 
-    irq_handler(255);
+    irq_handler(EV_FLIP);
 }
 
 //----------------------------------------------------------------------------
@@ -257,7 +243,7 @@ init()
     blit.bind.vertex_buffers[0] = blit.vbuf;
     blit.bind.fs.samplers[0]    = blit.smp;
 
-#if _WIN32
+#if _WIN64
     sg_shader_desc sh_desc{};
     sh_desc.attrs[0].sem_name = "POSITION";
     sh_desc.attrs[1].sem_name = "TEXCOORD";
@@ -434,7 +420,6 @@ frame()
     simgui_new_frame(desc);
 
     /*=== UI CODE STARTS HERE ===*/
-    //render_main_menu();
 
     if (tool.online_mode) {
         online_mode(delta_time, has_connection);
@@ -443,8 +428,9 @@ frame()
         capture_mode(delta_time);
     }
 
-    //render_captures_list();
-    //render_capture_status();
+    for (auto &widget : widgets) {
+        widget->render(delta_time);
+    }
 
     if (cmdlist_data) {
         extern void render_dbg_cmdlist(uintptr_t, size_t);

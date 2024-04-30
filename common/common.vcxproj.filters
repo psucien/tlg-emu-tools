@@ -21,6 +21,9 @@
     <ClCompile Include="gpu_shared.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="win32\ipc_manager.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ipc_manager.h">

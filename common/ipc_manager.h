@@ -3,7 +3,7 @@
 
 #include "common.h"
 
-#ifdef _WIN32
+#ifdef _WIN64
 #include <windows.h>
 #endif
 
@@ -141,10 +141,10 @@ struct ipc_manager
 
     shmem_info_block_header *iblock_addr{ nullptr };
 private:
-    void wait_for_connection();
+    void wait_for_connection(std::stop_token stoken);
 
-    std::thread thread_{};
-#ifdef _WIN32
+    std::jthread thread_{};
+#ifdef _WIN64
     HANDLE shmem_ib_handle_{ INVALID_HANDLE_VALUE };
     HANDLE shmem_stack_handle_{ INVALID_HANDLE_VALUE };
     HANDLE client_pipe_in_h_{ INVALID_HANDLE_VALUE };

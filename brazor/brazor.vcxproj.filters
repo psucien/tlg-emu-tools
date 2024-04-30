@@ -51,6 +51,18 @@
     <ClCompile Include="gcn_shader_regs.cc">
       <Filter>Source Files\gui</Filter>
     </ClCompile>
+    <ClCompile Include="gui.cc">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="gui_menu.cc">
+      <Filter>Source Files\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="brazor.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\ipc.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gui.h">
@@ -60,6 +72,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui_cmdlist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gui_menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "gui.h"
+#include "gui_cmdlist.h"
 #include "brazor.h"
 
 #include <common/cmdproc_iface.h>

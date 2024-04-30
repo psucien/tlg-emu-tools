@@ -2,16 +2,22 @@
 #define BRAZOR_GUI_HELPERS_H_
 
 #include <string>
+#include <vector>
 
 
-struct brazor_ui_element
+struct widget_base
 {
-    brazor_ui_element() {}
-    virtual ~brazor_ui_element() {}
+    widget_base() = delete;
+    explicit widget_base(std::string const &title);
+    virtual ~widget_base() {}
 
-    virtual void init(std::string const &title) = 0;
-    virtual void render() = 0;
+    virtual void init() = 0;
+    virtual void render(double dt) = 0;
+
+    std::string name{};
 };
+
+extern std::vector<widget_base*> widgets;
 
 bool aligned_button(char const *label, float alignment = 0.5f);
 

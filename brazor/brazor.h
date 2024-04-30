@@ -71,8 +71,13 @@ struct debugger_module
 
     bool                                    cap_is_opened{ false };
 
-    std::chrono::steady_clock::time_point   frame_start_t[MAX_VO_BUFFERS];
-    std::chrono::steady_clock::time_point   frame_end_t[MAX_VO_BUFFERS];
+#if _WIN64
+    using time_point = std::chrono::steady_clock::time_point;
+#else
+    using time_point = std::chrono::system_clock::time_point;
+#endif
+    std::array<time_point, MAX_VO_BUFFERS>  frame_start_t{};
+    std::array<time_point, MAX_VO_BUFFERS>  frame_end_t{};
     size_t                                  frame_time{};
 };
 

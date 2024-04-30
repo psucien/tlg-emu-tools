@@ -65,6 +65,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(SolutionDir)build\out\common.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -88,16 +89,22 @@
     <ClCompile Include="..\third\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\third\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\third\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="brazor.cc" />
     <ClCompile Include="gcn_context_regs.cc" />
     <ClCompile Include="gcn_op_names.cc" />
     <ClCompile Include="gcn_shader_regs.cc" />
+    <ClCompile Include="gui.cc" />
     <ClCompile Include="gui_cmdlist.cc" />
     <ClCompile Include="gui_main.cc" />
+    <ClCompile Include="gui_menu.cc" />
+    <ClCompile Include="win32\ipc.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="brazor.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="gui.h" />
+    <ClInclude Include="gui_cmdlist.h" />
+    <ClInclude Include="gui_menu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

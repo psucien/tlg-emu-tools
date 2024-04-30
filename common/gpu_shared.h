@@ -8,6 +8,11 @@
 
 static auto constexpr MAX_GRAPHICS_BACKENDS = 4u;
 
+static auto constexpr EV_FLIP = 0xffu;
+
+static auto constexpr GFX_DCB_TOKEN = 0xffu;
+static auto constexpr GFX_cCB_TOKEN = 0xfeu;
+
 struct graphics_backend_t
 {
     graphics_backend_t(

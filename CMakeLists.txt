@@ -3,16 +3,23 @@ PROJECT(brazor)
 
 SET(CMAKE_CXX_STANDARD 23)
 
-IF (UNIX)
-        SET(LINUX_LIBS GL X11 Xi Xcursor)
-ENDIF (UNIX)
-
 FILE(GLOB_RECURSE
         BRAZOR_SRCS
         ${CMAKE_CURRENT_SOURCE_DIR}/brazor/*.cc
         ${CMAKE_CURRENT_SOURCE_DIR}/brazor/*.h        
         ${CMAKE_CURRENT_SOURCE_DIR}/common/*.cc
         ${CMAKE_CURRENT_SOURCE_DIR}/common/*.h)
+
+IF (UNIX)
+        SET(LINUX_LIBS GL X11 Xi Xcursor)
+
+        FOREACH (TMP_PATH ${BRAZOR_SRCS})
+            STRING(FIND ${TMP_PATH} "win32" EXCLUDE_DIR_FOUND)
+            IF (NOT ${EXCLUDE_DIR_FOUND} EQUAL -1)
+                LIST(REMOVE_ITEM BRAZOR_SRCS ${TMP_PATH})
+            ENDIF ()
+        ENDFOREACH(TMP_PATH)
+ENDIF (UNIX)
 
 FILE(GLOB
         IMGUI
