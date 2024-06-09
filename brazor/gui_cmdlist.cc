@@ -752,7 +752,7 @@ on_set_context_reg
                 [[fallthrough]];
             case mmCB_COLOR7_INFO: {
                 if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
-                    parse__CB_COLOR_INFO(it_body[1]);
+                    parse__CB_COLOR_INFO(it_body[i + 1]);
                     ImGui::EndTooltip();
                 }
                 break;
@@ -773,7 +773,7 @@ on_set_context_reg
                 [[fallthrough]];
             case mmCB_COLOR7_ATTRIB: {
                 if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
-                    parse__CB_COLOR_ATTRIB(it_body[1]);
+                    parse__CB_COLOR_ATTRIB(it_body[i + 1]);
                     ImGui::EndTooltip();
                 }
                 break;
@@ -794,7 +794,7 @@ on_set_context_reg
                 [[fallthrough]];
             case mmCB_BLEND7_CONTROL: {
                 if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
-                    parse__CB_BLEND_CONTROL(it_body[1]);
+                    parse__CB_BLEND_CONTROL(it_body[i + 1]);
                     ImGui::EndTooltip();
                 }
                 break;
