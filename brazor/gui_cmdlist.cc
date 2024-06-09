@@ -111,6 +111,276 @@ on_set_base
 }
 
 //-----------------------------------------------------------------------------
+auto parse__CB_COLOR_INFO = [](uint32_t value)
+{
+    auto const reg =
+        reinterpret_cast<regCB_COLOR0_INFO const &>(value);
+
+    if (ImGui::BeginTable("CB_COLOR_INFO", 2,
+        ImGuiTableFlags_Borders
+        | ImGuiTableFlags_RowBg))
+    {
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ENDIAN");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ENDIAN);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("FORMAT");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.FORMAT);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("LINEAR_GENERAL");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.LINEAR_GENERAL);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("NUMBER_TYPE");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.NUMBER_TYPE);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("COMP_SWAP");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.COMP_SWAP);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("FAST_CLEAR");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.FAST_CLEAR);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("COMPRESSION");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.COMPRESSION);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("BLEND_CLAMP");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.BLEND_CLAMP);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("BLEND_BYPASS");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.BLEND_BYPASS);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("SIMPLE_FLOAT");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.SIMPLE_FLOAT);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ROUND_MODE");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ROUND_MODE);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("CMASK_IS_LINEAR");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.CMASK_IS_LINEAR);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("BLEND_OPT_DONT_RD_DST");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.BLEND_OPT_DONT_RD_DST);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("BLEND_OPT_DISCARD_PIXEL");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.BLEND_OPT_DISCARD_PIXEL);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("FMASK_COMPRESSION_DISABLE__CI__VI");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.FMASK_COMPRESSION_DISABLE__CI__VI);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("FMASK_COMPRESS_1FRAG_ONLY__VI");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.FMASK_COMPRESS_1FRAG_ONLY__VI);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("DCC_ENABLE__VI");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.DCC_ENABLE__VI);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("CMASK_ADDR_TYPE__VI");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.CMASK_ADDR_TYPE__VI);
+
+        ImGui::EndTable();
+    }
+};
+
+//-----------------------------------------------------------------------------
+auto parse__CB_COLOR_ATTRIB = [](uint32_t value)
+{
+    auto const reg =
+        reinterpret_cast<regCB_COLOR0_ATTRIB const &>(value);
+
+    if (ImGui::BeginTable("CB_COLOR_ATTRIB", 2,
+        ImGuiTableFlags_Borders
+        | ImGuiTableFlags_RowBg))
+    {
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("TILE_MODE_INDEX");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.TILE_MODE_INDEX);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("FMASK_TILE_MODE_INDEX");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.FMASK_TILE_MODE_INDEX);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("FMASK_BANK_HEIGHT");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.FMASK_BANK_HEIGHT);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("NUM_SAMPLES");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.NUM_SAMPLES);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("NUM_FRAGMENTS");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.NUM_FRAGMENTS);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("FORCE_DST_ALPHA_1");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.FORCE_DST_ALPHA_1);
+
+        ImGui::EndTable();
+    }
+};
+
+//-----------------------------------------------------------------------------
+auto parse__CB_BLEND_CONTROL = [](uint32_t value)
+{
+    auto const reg =
+        reinterpret_cast<regCB_BLEND0_CONTROL const &>(value);
+
+    if (ImGui::BeginTable("CB_BLEND_CONTROL", 2,
+        ImGuiTableFlags_Borders
+        | ImGuiTableFlags_RowBg))
+    {
+        static const char* blends[] = {
+            "BLEND_ZERO",
+            "BLEND_ONE",
+            "BLEND_SRC_COLOR",
+            "BLEND_ONE_MINUS_SRC_COLOR",
+            "BLEND_SRC_ALPHA",
+            "BLEND_ONE_MINUS_SRC_ALPHA",
+            "BLEND_DST_ALPHA",
+            "BLEND_ONE_MINUS_DST_ALPHA",
+            "BLEND_DST_COLOR",
+            "BLEND_ONE_MINUS_DST_COLOR",
+            "BLEND_SRC_ALPHA_SATURATE",
+            "-ERR-",
+            "-ERR-",
+            "BLEND_CONSTANT_COLOR",
+            "BLEND_ONE_MINUS_CONSTANT_COLOR",
+            "BLEND_SRC1_COLOR",
+            "BLEND_INV_SRC1_COLOR",
+            "BLEND_SRC1_ALPHA",
+            "BLEND_INV_SRC1_ALPHA",
+            "BLEND_CONSTANT_ALPHA",
+            "BLEND_ONE_MINUS_CONSTANT_ALPHA"
+        };
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("COLOR_SRCBLEND");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X (%s)",
+            reg.bits.COLOR_SRCBLEND,
+            blends[reg.bits.COLOR_SRCBLEND]
+        );
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("COLOR_COMB_FCN");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.COLOR_COMB_FCN);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("COLOR_DESTBLEND");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X (%s)",
+            reg.bits.COLOR_DESTBLEND,
+            blends[reg.bits.COLOR_DESTBLEND]
+        );
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ALPHA_SRCBLEND");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ALPHA_SRCBLEND);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ALPHA_COMB_FCN");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ALPHA_COMB_FCN);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ALPHA_DESTBLEND");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ALPHA_DESTBLEND);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("SEPARATE_ALPHA_BLEND");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.SEPARATE_ALPHA_BLEND);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ENABLE");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ENABLE);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("DISABLE_ROP3");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.DISABLE_ROP3);
+
+        ImGui::EndTable();
+    }
+};
+
+//-----------------------------------------------------------------------------
 auto parse__PA_CL_VTE_CNTL = [](uint32_t value)
 {
     auto const reg =
@@ -462,6 +732,69 @@ on_set_context_reg
             case mmPA_CL_VTE_CNTL: {
                 if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
                     parse__PA_CL_VTE_CNTL(it_body[1]);
+                    ImGui::EndTooltip();
+                }
+                break;
+            }
+            case mmCB_COLOR0_INFO:
+                [[fallthrough]];
+            case mmCB_COLOR1_INFO:
+                [[fallthrough]];
+            case mmCB_COLOR2_INFO:
+                [[fallthrough]];
+            case mmCB_COLOR3_INFO:
+                [[fallthrough]];
+            case mmCB_COLOR4_INFO:
+                [[fallthrough]];
+            case mmCB_COLOR5_INFO:
+                [[fallthrough]];
+            case mmCB_COLOR6_INFO:
+                [[fallthrough]];
+            case mmCB_COLOR7_INFO: {
+                if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
+                    parse__CB_COLOR_INFO(it_body[1]);
+                    ImGui::EndTooltip();
+                }
+                break;
+            }
+            case mmCB_COLOR0_ATTRIB:
+                [[fallthrough]];
+            case mmCB_COLOR1_ATTRIB:
+                [[fallthrough]];
+            case mmCB_COLOR2_ATTRIB:
+                [[fallthrough]];
+            case mmCB_COLOR3_ATTRIB:
+                [[fallthrough]];
+            case mmCB_COLOR4_ATTRIB:
+                [[fallthrough]];
+            case mmCB_COLOR5_ATTRIB:
+                [[fallthrough]];
+            case mmCB_COLOR6_ATTRIB:
+                [[fallthrough]];
+            case mmCB_COLOR7_ATTRIB: {
+                if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
+                    parse__CB_COLOR_ATTRIB(it_body[1]);
+                    ImGui::EndTooltip();
+                }
+                break;
+            }
+            case mmCB_BLEND0_CONTROL:
+                [[fallthrough]];
+            case mmCB_BLEND1_CONTROL:
+                [[fallthrough]];
+            case mmCB_BLEND2_CONTROL:
+                [[fallthrough]];
+            case mmCB_BLEND3_CONTROL:
+                [[fallthrough]];
+            case mmCB_BLEND4_CONTROL:
+                [[fallthrough]];
+            case mmCB_BLEND5_CONTROL:
+                [[fallthrough]];
+            case mmCB_BLEND6_CONTROL:
+                [[fallthrough]];
+            case mmCB_BLEND7_CONTROL: {
+                if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
+                    parse__CB_BLEND_CONTROL(it_body[1]);
                     ImGui::EndTooltip();
                 }
                 break;

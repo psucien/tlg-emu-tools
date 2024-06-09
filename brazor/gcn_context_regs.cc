@@ -130,6 +130,8 @@ get_context_reg_name
             return "mmDB_STENCIL_CONTROL";
         case mmDB_STENCILREFMASK:
             return "mmDB_STENCILREFMASK";
+        case mmDB_STENCILREFMASK_BF:
+            return "mmDB_STENCILREFMASK_BF";
         case mmDB_STENCIL_CLEAR:
             return "mmDB_STENCIL_CLEAR";
         case mmDB_DEPTH_CLEAR:
@@ -142,8 +144,12 @@ get_context_reg_name
             return "mmDB_STENCIL_INFO";
         case mmDB_Z_READ_BASE:
             return "mmDB_Z_READ_BASE";
+        case mmDB_STENCIL_READ_BASE:
+            return "mmDB_STENCIL_READ_BASE";
         case mmDB_Z_WRITE_BASE:
             return "mmDB_Z_WRITE_BASE";
+        case mmDB_STENCIL_WRITE_BASE:
+            return "mmDB_STENCIL_WRITE_BASE";
         case mmDB_DEPTH_INFO:
             return "mmDB_DEPTH_INFO";
         case mmDB_DEPTH_VIEW:
@@ -182,10 +188,20 @@ get_context_reg_name
             return "mmDB_HTILE_DATA_BASE";
         case mmDB_HTILE_SURFACE:
             return "mmDB_HTILE_SURFACE";
+        case mmPA_SU_LINE_CNTL:
+            return "mmPA_SU_LINE_CNTL";
         case mmPA_SC_VPORT_ZMIN_0:
             return "mmPA_SC_VPORT_ZMIN_0";
         case mmPA_SC_VPORT_ZMAX_0:
             return "mmPA_SC_VPORT_ZMAX_0";
+        case mmPA_SC_VPORT_SCISSOR_0_TL:
+            return "mmPA_SC_VPORT_SCISSOR_0_TL";
+        case mmPA_SC_VPORT_SCISSOR_0_BR:
+            return "mmPA_SC_VPORT_SCISSOR_0_BR";
+        case mmPA_SC_GENERIC_SCISSOR_TL:
+            return "mmPA_SC_GENERIC_SCISSOR_TL";
+        case mmPA_SC_GENERIC_SCISSOR_BR:
+            return "mmPA_SC_GENERIC_SCISSOR_BR";
         case mmPA_CL_VPORT_XSCALE:
             return "mmPA_CL_VPORT_XSCALE";
         case mmPA_CL_VPORT_YSCALE:
