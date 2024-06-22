@@ -106,6 +106,8 @@ get_context_reg_name
             return "mmDB_DEPTH_CONTROL";
         case mmDB_EQAA:
             return "mmDB_EQAA";
+        case mmPA_SU_POINT_SIZE:
+            return "mmPA_SU_POINT_SIZE";
         case mmPA_SU_SC_MODE_CNTL:
             return "mmPA_SU_SC_MODE_CNTL";
         case mmPA_SC_MODE_CNTL_0:

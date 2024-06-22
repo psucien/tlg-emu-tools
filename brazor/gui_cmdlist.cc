@@ -381,6 +381,55 @@ auto parse__CB_BLEND_CONTROL = [](uint32_t value)
 };
 
 //-----------------------------------------------------------------------------
+auto parse__CB_COLOR_CONTROL = [](uint32_t value)
+{
+    auto const reg =
+        reinterpret_cast<CB_COLOR_CONTROL const &>(value);
+
+    if (ImGui::BeginTable("CB_COLOR_CONTROL", 2,
+        ImGuiTableFlags_Borders
+        | ImGuiTableFlags_RowBg))
+    {
+        static const char* mode[] = {
+            "CB_DISABLE",
+            "CB_NORMAL",
+            "CB_ELIMINATE_FAST_CLEAR",
+            "CB_RESOLVE",
+            "-ERR-",
+            "CB_FMASK_DECOMPRESS",
+        };
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("DISABLE_DUAL_QUAD__VI");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.DISABLE_DUAL_QUAD__VI);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("DEGAMMA_ENABLE");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.DEGAMMA_ENABLE);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("MODE");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X (%s)",
+            reg.bits.MODE,
+            mode[reg.bits.MODE]);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ROP3");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ROP3);
+
+        ImGui::EndTable();
+    }
+};
+
+//-----------------------------------------------------------------------------
 auto parse__PA_CL_VTE_CNTL = [](uint32_t value)
 {
     auto const reg =
@@ -736,6 +785,12 @@ on_set_context_reg
                 }
                 break;
             }
+            case mmCB_COLOR_CONTROL:
+                if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
+                    parse__CB_COLOR_CONTROL(it_body[1]);
+                    ImGui::EndTooltip();
+                }
+                break;
             case mmCB_COLOR0_INFO:
                 [[fallthrough]];
             case mmCB_COLOR1_INFO:
@@ -853,6 +908,11 @@ on_set_sh_reg
                 "reg: %4X (%s)",
                 pkt->regOffset + i,
                 get_shader_reg_name(absOffset)
+        );
+
+        ImGui::Text(
+                "%08X",
+                *((uint32_t*)(pm4_hdr) + 2 + i)
         );
 
         //...
