@@ -504,6 +504,50 @@ auto parse__PA_CL_VTE_CNTL = [](uint32_t value)
 };
 
 //-----------------------------------------------------------------------------
+auto parse__PA_SC_AA_CONFIG = [](uint32_t value)
+{
+    auto const reg =
+        reinterpret_cast<regPA_SC_AA_CONFIG const &>(value);
+
+    if (ImGui::BeginTable("PA_SC_AA_CONFIG", 2,
+        ImGuiTableFlags_Borders
+        | ImGuiTableFlags_RowBg))
+    {
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("MSAA_NUM_SAMPLES");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.MSAA_NUM_SAMPLES);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("AA_MASK_CENTROID_DTMN");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.AA_MASK_CENTROID_DTMN);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("MAX_SAMPLE_DIST");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.MAX_SAMPLE_DIST);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("MSAA_EXPOSED_SAMPLES");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.MSAA_EXPOSED_SAMPLES);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("DETAIL_TO_EXPOSED_MODE");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.DETAIL_TO_EXPOSED_MODE);
+
+        ImGui::EndTable();
+    }
+};
+
+//-----------------------------------------------------------------------------
 auto parse__DB_RENDER_CONTROL = [](uint32_t value)
 {
     auto const reg =
@@ -652,6 +696,166 @@ auto parse__DB_DEPTH_CONTROL = [](uint32_t value)
 };
 
 //-----------------------------------------------------------------------------
+auto parse__DB_Z_INFO = [](uint32_t value)
+{
+    auto const reg =
+        reinterpret_cast<DB_Z_INFO const &>(value);
+
+    if (ImGui::BeginTable("DB_DEPTH_CONTROL", 2,
+        ImGuiTableFlags_Borders
+        | ImGuiTableFlags_RowBg))
+    {
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("FORMAT");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.FORMAT);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("NUM_SAMPLES");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.NUM_SAMPLES);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("TILE_SPLIT__CI__VI");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.TILE_SPLIT__CI__VI);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("TILE_MODE_INDEX");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.TILE_MODE_INDEX);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("DECOMPRESS_ON_N_ZPLANES__VI");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.DECOMPRESS_ON_N_ZPLANES__VI);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ALLOW_EXPCLEAR");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ALLOW_EXPCLEAR);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("READ_SIZE");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.READ_SIZE);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("TILE_SURFACE_ENABLE");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.TILE_SURFACE_ENABLE);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("CLEAR_DISALLOWED__VI");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.CLEAR_DISALLOWED__VI);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ZRANGE_PRECISION");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ZRANGE_PRECISION);
+
+        ImGui::EndTable();
+    }
+};
+
+//-----------------------------------------------------------------------------
+auto parse__DB_EQAA = [](uint32_t value)
+{
+    auto const reg =
+        reinterpret_cast<DB_EQAA const &>(value);
+
+    if (ImGui::BeginTable("DB_DEPTH_CONTROL", 2,
+        ImGuiTableFlags_Borders
+        | ImGuiTableFlags_RowBg))
+    {
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("MAX_ANCHOR_SAMPLES");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.MAX_ANCHOR_SAMPLES);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("PS_ITER_SAMPLES");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.PS_ITER_SAMPLES);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("MASK_EXPORT_NUM_SAMPLES");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.MASK_EXPORT_NUM_SAMPLES);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ALPHA_TO_MASK_NUM_SAMPLES");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ALPHA_TO_MASK_NUM_SAMPLES);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("HIGH_QUALITY_INTERSECTIONS");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.HIGH_QUALITY_INTERSECTIONS);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("INCOHERENT_EQAA_READS");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.INCOHERENT_EQAA_READS);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("INTERPOLATE_COMP_Z");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.INTERPOLATE_COMP_Z);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("INTERPOLATE_SRC_Z");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.INTERPOLATE_SRC_Z);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("STATIC_ANCHOR_ASSOCIATIONS");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.STATIC_ANCHOR_ASSOCIATIONS);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ALPHA_TO_MASK_EQAA_DISABLE");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ALPHA_TO_MASK_EQAA_DISABLE);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("OVERRASTERIZATION_AMOUNT");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.OVERRASTERIZATION_AMOUNT);
+
+        ImGui::TableNextRow();
+        ImGui::TableSetColumnIndex(0);
+        ImGui::Text("ENABLE_POSTZ_OVERRASTERIZATION");
+        ImGui::TableSetColumnIndex(1);
+        ImGui::Text("%X", reg.bits.ENABLE_POSTZ_OVERRASTERIZATION);
+
+        ImGui::EndTable();
+    }
+};
+
+//-----------------------------------------------------------------------------
 auto parse__PA_SU_SC_MODE_CNTL = [](uint32_t value)
 {
     auto const reg =
@@ -778,6 +982,13 @@ on_set_context_reg
                 }
                 break;
             }
+            case mmPA_SC_AA_CONFIG: {
+                if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
+                    parse__PA_SC_AA_CONFIG(it_body[1]);
+                    ImGui::EndTooltip();
+                }
+                break;
+            }
             case mmPA_CL_VTE_CNTL: {
                 if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
                     parse__PA_CL_VTE_CNTL(it_body[1]);
@@ -864,6 +1075,20 @@ on_set_context_reg
             case mmDB_DEPTH_CONTROL: {
                 if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
                     parse__DB_DEPTH_CONTROL(it_body[1]);
+                    ImGui::EndTooltip();
+                }
+                break;
+            }
+            case mmDB_EQAA: {
+                if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
+                    parse__DB_EQAA(it_body[1]);
+                    ImGui::EndTooltip();
+                }
+                break;
+            }
+            case mmDB_Z_INFO: {
+                if (ImGui::IsItemHovered() && ImGui::BeginTooltip()) {
+                    parse__DB_Z_INFO(it_body[1]);
                     ImGui::EndTooltip();
                 }
                 break;
