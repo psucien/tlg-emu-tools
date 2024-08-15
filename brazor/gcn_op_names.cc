@@ -77,6 +77,8 @@ get_opcode_name
             return "IT_DRAW_INDEX_INDIRECT";
         case IT_DRAW_INDEX_2:
             return "IT_DRAW_INDEX_2";
+        case IT_DRAW_INDEX_OFFSET_2:
+            return "IT_DRAW_INDEX_OFFSET_2";
         case IT_CONTEXT_CONTROL:
             return "IT_CONTEXT_CONTROL";
         case IT_DRAW_INDIRECT_MULTI:

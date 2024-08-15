@@ -1223,10 +1223,10 @@ struct dbg_cmdlist final : public i_cmdproc
                     {
                         // All these commands are terminated by NOP at the end, so
                         // it is safe to skip it to be even with CP
-                        next_pm4_hdr = get_next(next_pm4_hdr, 1);
-                        auto constexpr nop_len = 0x10;
-                        processed_len += nop_len;
-                        processed_size += nop_len;
+                        //next_pm4_hdr = get_next(next_pm4_hdr, 1);
+                        //auto constexpr nop_len = 0x10;
+                        //processed_len += nop_len;
+                        //processed_size += nop_len;
 
                         batches.emplace_back(batch_info_t{
                             marker,
