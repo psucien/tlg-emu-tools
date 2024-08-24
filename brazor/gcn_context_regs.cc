@@ -28,6 +28,22 @@ get_context_reg_name
             return "mmVGT_GS_MODE";
         case mmVGT_STRMOUT_CONFIG:
             return "mmVGT_STRMOUT_CONFIG";
+        case mmVGT_OUT_DEALLOC_CNTL:
+            return "mmVGT_OUT_DEALLOC_CNTL";
+        case mmVGT_VTX_CNT_EN:
+            return "mmVGT_VTX_CNT_EN";
+        case mmVGT_MAX_VTX_INDX:
+            return "mmVGT_MAX_VTX_INDX";
+        case mmVGT_MULTI_PRIM_IB_RESET_INDX:
+            return "mmVGT_MULTI_PRIM_IB_RESET_INDX";
+        case mmVGT_OUTPUT_PATH_CNTL:
+            return "mmVGT_OUTPUT_PATH_CNTL";
+        case mmVGT_GS_PER_ES:
+            return "mmVGT_GS_PER_ES";
+        case mmVGT_ES_PER_GS:
+            return "mmVGT_ES_PER_GS";
+        case mmVGT_GS_PER_VS:
+            return "mmVGT_GS_PER_VS";
         case mmCB_COLOR0_BASE:
             return "mmCB_COLOR0_BASE";
         case mmCB_COLOR0_INFO:
@@ -108,8 +124,14 @@ get_context_reg_name
             return "mmDB_EQAA";
         case mmPA_SU_POINT_SIZE:
             return "mmPA_SU_POINT_SIZE";
+        case mmPA_SU_POINT_MINMAX:
+            return "mmPA_SU_POINT_MINMAX";
         case mmPA_SU_SC_MODE_CNTL:
             return "mmPA_SU_SC_MODE_CNTL";
+        case mmPA_SU_POLY_OFFSET_DB_FMT_CNTL:
+            return "mmPA_SU_POLY_OFFSET_DB_FMT_CNTL";
+        case mmPA_SC_CLIPRECT_RULE:
+            return "mmPA_SC_CLIPRECT_RULE";
         case mmPA_SC_MODE_CNTL_0:
             return "mmPA_SC_MODE_CNTL_0";
         case mmPA_SC_MODE_CNTL_1:
@@ -120,6 +142,10 @@ get_context_reg_name
             return "mmPA_SC_AA_SAMPLE_LOCS_PIXEL_X0Y1_0";
         case mmPA_SC_AA_SAMPLE_LOCS_PIXEL_X1Y0_0:
             return "mmPA_SC_AA_SAMPLE_LOCS_PIXEL_X1Y0_0";
+        case mmPA_SC_AA_MASK_X0Y0_X1Y0:
+            return "mmPA_SC_AA_MASK_X0Y0_X1Y0";
+        case mmPA_SC_AA_MASK_X0Y1_X1Y1:
+            return "mmPA_SC_AA_MASK_X0Y1_X1Y1";
         case mmPA_SC_CENTROID_PRIORITY_0:
             return "mmPA_SC_CENTROID_PRIORITY_0";
         case mmPA_SC_CENTROID_PRIORITY_1:
@@ -224,6 +250,8 @@ get_context_reg_name
             return "mmPA_SC_SCREEN_SCISSOR_BR";
         case mmPA_SU_HARDWARE_SCREEN_OFFSET:
             return "mmPA_SU_HARDWARE_SCREEN_OFFSET";
+        case mmPA_SU_VTX_CNTL:
+            return "mmPA_SU_VTX_CNTL";
         case mmPA_CL_GB_VERT_CLIP_ADJ:
             return "mmPA_CL_GB_VERT_CLIP_ADJ";
         case mmPA_CL_GB_HORZ_CLIP_ADJ:
